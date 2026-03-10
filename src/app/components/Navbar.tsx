@@ -1,29 +1,46 @@
 import React from 'react';
-import { Button } from './Button';
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
 
 export function Navbar() {
   return (
-    <motion.nav 
-      className="w-full bg-white border-b border-border sticky top-0 z-50"
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50 border-b border-border"
+      style={{
+        background: 'rgba(250, 250, 249, 0.88)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+      }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="font-bold text-xl text-primary">Marketra®</div>
-        
-        {/* Center Navigation */}
-        <div className="hidden md:flex items-center gap-8 text-sm uppercase tracking-wide">
-          <a href="#about" className="text-primary hover:text-gray-600 transition-colors">About</a>
-          <a href="#works" className="text-primary hover:text-gray-600 transition-colors">Case Studies</a>
-          <a href="#services" className="text-primary hover:text-gray-600 transition-colors">Capabilities</a>
-          <a href="#contact" className="text-primary hover:text-gray-600 transition-colors">Contact</a>
+        <Link to="/" className="flex items-center shrink-0" aria-label="Ives Deutschmann Marketing – Home">
+          <img src="/idm-logo.png?v=2" alt="Ives Deutschmann Marketing" className="h-24 w-auto" />
+        </Link>
+
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          <Link to="/#about" className="text-primary hover:text-muted-foreground transition-colors text-[0.78rem] uppercase tracking-[0.12em]">
+            About
+          </Link>
+          <Link to="/case-studies" className="text-primary hover:text-muted-foreground transition-colors text-[0.78rem] uppercase tracking-[0.12em]">
+            Case Studies
+          </Link>
+          <Link to="/#services" className="text-primary hover:text-muted-foreground transition-colors text-[0.78rem] uppercase tracking-[0.12em]">
+            Capabilities
+          </Link>
+          <Link to="/#contact" className="text-primary hover:text-muted-foreground transition-colors text-[0.78rem] uppercase tracking-[0.12em]">
+            Contact
+          </Link>
         </div>
-        
-        {/* Right CTA */}
-        <Button>Book a Call</Button>
+
+        <Link
+          to="/#contact"
+          className="px-7 py-4 rounded-full text-white text-base font-semibold bg-cta hover:bg-cta-hover transition-colors font-body min-h-[3rem] flex items-center justify-center"
+        >
+          Book a Call
+        </Link>
       </div>
     </motion.nav>
   );

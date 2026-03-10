@@ -1,46 +1,82 @@
-import React from 'react';
-import { SectionLabel } from './SectionLabel';
+import React from "react";
+import AutoScroll from "embla-carousel-auto-scroll";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "./ui/carousel";
 
-export function Collaborations() {
-  const clients = [
-    { name: 'E-Commerce Growth', service: 'Paid Media & CRO' },
-    { name: 'B2B SaaS Platform', service: 'SEO & Attribution' },
-    { name: 'DTC Consumer Brand', service: 'Full Growth Partner' },
-    { name: 'Marketplace Platform', service: 'Performance Marketing' }
-  ];
+const mockLogos = [
+  <svg key="0" className="h-8 w-auto" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="14" r="6" stroke="currentColor" strokeWidth="2" fill="none" />
+    <circle cx="28" cy="14" r="6" stroke="currentColor" strokeWidth="2" fill="none" />
+    <line x1="18" y1="14" x2="22" y2="14" stroke="currentColor" strokeWidth="2" />
+    <text x="40" y="18" fontSize="10" fontWeight="600" letterSpacing="0.15em" fill="currentColor">STORE</text>
+  </svg>,
+  <svg key="1" className="h-8 w-auto" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AMAUWM">
+    <text x="50" y="18" textAnchor="middle" fontSize="10" fontWeight="600" letterSpacing="0.15em" fill="currentColor">AMAUWM</text>
+  </svg>,
+  <svg key="2" className="h-8 w-auto" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 20 Q14 6 22 20 Q18 14 8 20z" stroke="currentColor" strokeWidth="2" fill="none" />
+    <circle cx="28" cy="14" r="5" stroke="currentColor" strokeWidth="2" fill="none" />
+    <text x="40" y="18" fontSize="10" fontWeight="600" letterSpacing="0.15em" fill="currentColor">BRAND</text>
+  </svg>,
+];
 
+const clients: { category: string; years: number; service: string; logoImage?: string; logoAlt?: string }[] = [
+  { category: "Home Improvement", years: 1, service: "Website Construction & SEO", logoImage: "/whirly-wash-logo.png", logoAlt: "Whirly Wash" },
+  { category: "Professional Development Services", years: 2, service: "Website Construction & SEO", logoImage: "/amauwm-logo.png", logoAlt: "AMAUWM" },
+  { category: "Industrial Cleaning Services", years: 1, service: "Full Growth Partner", logoImage: "/badger-window-cleaners-logo.png", logoAlt: "Badger Window Cleaners West" },
+];
+
+function Card({ client, logo }: { client: (typeof clients)[0]; logo: React.ReactNode }) {
   return (
-    <section className="w-full bg-[#F9F9F9] py-24">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <SectionLabel>Trusted Partners — Growth-stage brands and founder-led companies.</SectionLabel>
-        
-        <div className="overflow-hidden mt-8">
-          <div className="flex gap-6 animate-marquee">
-            {[...clients, ...clients].map((client, index) => (
-              <div 
-                key={index} 
-                className="flex-shrink-0 bg-white border border-border rounded-2xl p-6 w-[300px]"
-              >
-                <h3 className="font-semibold text-primary mb-2">{client.name}</h3>
-                <p className="text-sm text-foreground">{client.service}</p>
-              </div>
-            ))}
-          </div>
+    <div className="bg-[#e8e8e8] rounded-2xl p-6 flex flex-col shadow-sm border border-white/50 h-full min-h-[260px]">
+      <h3 className="font-bold text-primary text-lg mb-1">{client.category}</h3>
+      <p className="text-sm text-[#666666] mb-4">
+        Working for {client.years} {client.years === 1 ? "year" : "years"}
+      </p>
+      <span className="inline-block w-fit px-3 py-1.5 rounded-full bg-[#f0f0f0] text-sm text-primary/90 font-medium mb-6">
+        {client.service}
+      </span>
+      <div className="mt-auto pt-2">
+        <div className="w-full rounded-full bg-white py-5 px-4 flex items-center justify-center min-h-[72px] shadow-inner text-primary">
+          {client.logoImage ? (
+            <img src={client.logoImage} alt={client.logoAlt ?? client.category} className="h-14 w-auto object-contain" />
+          ) : (
+            logo
+          )}
         </div>
       </div>
-      
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+    </div>
+  );
+}
+
+export function Collaborations() {
+  return (
+    <section className="w-full bg-[#F5F5F5] py-24">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="mb-10">
+          <p className="text-sm text-primary/80 mb-2">• Collaborations</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary">Trusted across industries.</h2>
+        </div>
+
+        <Carousel
+          opts={{ loop: true, align: "start", dragFree: true }}
+          plugins={[AutoScroll({ speed: 0.5, stopOnInteraction: false, stopOnMouseEnter: true })]}
+        >
+          <CarouselContent className="-ml-4 md:-ml-6">
+            {clients.map((client, index) => (
+              <CarouselItem
+                key={index}
+                className="pl-4 md:pl-6 basis-[85%] sm:basis-1/2 lg:basis-1/3"
+              >
+                <Card client={client} logo={mockLogos[index]} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
     </section>
   );
 }

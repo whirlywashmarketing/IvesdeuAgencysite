@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router';
 import { SectionLabel } from './SectionLabel';
 import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 
@@ -7,7 +8,7 @@ export function Testimonials() {
 
   const testimonials = [
     {
-      quote: 'Marketra transformed our paid acquisition strategy. We scaled from $50K to $500K monthly revenue while improving ROAS by 2.7x.',
+      quote: 'Ives Deutschmann Marketing transformed our paid acquisition strategy. We scaled from $50K to $500K monthly revenue while improving ROAS by 2.7x.',
       name: 'Sarah Johnson',
       title: 'CEO, UrbanThread'
     },
@@ -17,7 +18,7 @@ export function Testimonials() {
       title: 'Founder, Elixify Supplements'
     },
     {
-      quote: 'We needed a partner who understood performance, not vanity metrics. Marketra delivered a 3.1x return on ad spend within 90 days.',
+      quote: 'We needed a partner who understood performance, not vanity metrics. Ives Deutschmann Marketing delivered a 3.1x return on ad spend within 90 days.',
       name: 'Emily Rodriguez',
       title: 'Marketing Director, Luxe Beauty'
     },
@@ -47,16 +48,16 @@ export function Testimonials() {
   };
 
   return (
-    <section className="w-full bg-white py-24">
+    <section className="w-full py-24">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex items-start justify-between mb-12">
           <div>
             <SectionLabel>Testimonial</SectionLabel>
             <h2 className="text-5xl font-semibold text-primary">Words that inspire us.</h2>
           </div>
-          <a href="#works" className="text-primary hover:text-gray-600 flex items-center gap-2">
+          <Link to="/case-studies" className="text-primary hover:text-gray-600 flex items-center gap-2">
             Visit Case Studies <ArrowUpRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
         
         <div className="relative bg-[#F9F9F9] rounded-2xl p-12">

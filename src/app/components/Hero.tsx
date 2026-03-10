@@ -1,49 +1,71 @@
 import React from 'react';
-import { ShinyButton } from './ui/shiny-button';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Link } from 'react-router';
 import { motion } from 'motion/react';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0 },
+};
 
 export function Hero() {
   return (
-    <section className="w-full bg-white py-20">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-6xl md:text-7xl font-bold text-primary leading-tight mb-6">
-              Performance Marketing Built for Scalable Growth.
-            </h1>
-            <p className="text-lg text-[#666666] mb-8 leading-relaxed">
-              We design and execute data-driven acquisition systems that turn attention into revenue.
-            </p>
-            <div className="flex items-center gap-6">
-              <a href="#works" className="flex items-center gap-2 text-primary hover:text-gray-600 hover:underline underline-offset-4 active:scale-[0.98] cursor-pointer transition-all duration-200 font-medium">
-                <span>View Case Studies</span>
-              </a>
-              <ShinyButton>Book a Strategy Call</ShinyButton>
+    <section className="relative min-h-screen overflow-hidden hero-grid-overlay flex flex-col justify-center">
+      <div className="hero-coral-glow absolute inset-0 pointer-events-none" aria-hidden />
+
+      <div className="max-w-[900px] mx-auto w-full px-8 md:px-12 pt-[120px] pb-[80px] relative text-center">
+        <motion.p
+          className="eyebrow flex items-center justify-center gap-3 text-cta mb-6 font-body"
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <span className="w-6 h-px bg-cta shrink-0" aria-hidden />
+          <span className="text-[0.72rem] uppercase tracking-[0.18em]">Performance Marketing</span>
+        </motion.p>
+        <motion.h1
+          className="font-headline text-6xl md:text-7xl lg:text-8xl mb-6 leading-[0.92]"
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <span className="block text-primary">Built for</span>
+          <span className="block text-primary">scalable <span className="text-cta">growth.</span></span>
+        </motion.h1>
+        <motion.p
+          className="text-muted-foreground text-lg max-w-xl mx-auto mb-10 font-body font-normal"
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.35 }}
+        >
+          We design and execute data-driven acquisition systems that turn attention into revenue.
+        </motion.p>
+        <motion.div
+          className="flex flex-col items-center gap-6"
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <a
+              href="#contact"
+              className="px-6 py-3 rounded-full bg-cta text-white font-medium hover:bg-cta-hover transition-colors text-sm font-body"
+            >
+              Book a Call
+            </a>
+            <Link
+              to="/case-studies"
+              className="px-6 py-3 rounded-full bg-white border border-border text-primary font-medium hover:bg-gray-50 transition-colors text-sm font-body"
+            >
+              View Case Studies
+            </Link>
+          </div>
+          <div className="flex flex-wrap items-stretch justify-center gap-8">
+            <div className="w-[140px] md:w-[160px] bg-white rounded-lg border-2 border-cta p-4 shadow-lg flex flex-col justify-between">
+              <div className="font-headline text-3xl md:text-4xl text-cta">3+</div>
+              <div className="text-xs text-muted-foreground font-body mt-1">Clients Served</div>
             </div>
-          </motion.div>
-          
-          {/* Right Image */}
-          <motion.div 
-            className="relative"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          >
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwbWV0cmljc3xlbnwxfHx8fDE3NzI0NTkzNDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Performance analytics and data dashboard"
-                className="w-full h-[600px] object-cover"
-              />
+            <div className="w-[140px] md:w-[160px] bg-white rounded-lg border-2 border-cta p-4 shadow-lg flex flex-col justify-between">
+              <div className="font-headline text-3xl md:text-4xl text-cta">2.8x</div>
+              <div className="text-xs text-muted-foreground font-body mt-1">Avg. ROAS improvement</div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

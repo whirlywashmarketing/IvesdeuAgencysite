@@ -13,8 +13,8 @@ export function Button({ children, variant = 'filled', className = '', onClick }
   
   const variantStyles = {
     filled: 'bg-cta text-white hover:bg-cta-hover',
-    outlined: 'bg-transparent text-primary border border-primary hover:bg-primary hover:text-primary-foreground',
-    text: 'bg-transparent text-primary hover:text-gray-600'
+    outlined: 'bg-transparent text-primary border-2 border-primary hover:bg-primary hover:text-primary-foreground',
+    text: 'bg-transparent text-primary hover:text-muted-foreground'
   };
 
   return (
