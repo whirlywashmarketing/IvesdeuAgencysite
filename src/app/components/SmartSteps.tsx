@@ -5,9 +5,9 @@ import { motion } from 'motion/react';
 
 const calendarEvents = [
   { date: '01', label: 'Reel Spotlight', icon: Film },
-  { date: '06', label: 'DM Outreach', icon: Handshake },
-  { date: '17', label: 'Collab Reminder', icon: MessageSquare },
-  { date: '30', label: 'Campaign Launch', icon: Flame },
+  { date: '06', label: 'Outreach', icon: Handshake },
+  { date: '17', label: 'Collab', icon: MessageSquare },
+  { date: '30', label: 'Launch', icon: Flame },
 ];
 
 const steps = [

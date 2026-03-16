@@ -1,19 +1,51 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router';
+import { AnimatePresence } from 'motion/react';
 import { ScrollToTop } from './components/ScrollToTop';
+import { PageTransition } from './components/PageTransition';
 import { HomePage } from './pages/HomePage';
 import { CaseStudiesListPage } from './pages/CaseStudiesListPage';
 import { CaseStudyFullPage } from './pages/CaseStudyFullPage';
+
+function AppRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <HomePage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/case-studies"
+          element={
+            <PageTransition>
+              <CaseStudiesListPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/case-studies/:slug"
+          element={
+            <PageTransition>
+              <CaseStudyFullPage />
+            </PageTransition>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/case-studies" element={<CaseStudiesListPage />} />
-        <Route path="/case-studies/:slug" element={<CaseStudyFullPage />} />
-      </Routes>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

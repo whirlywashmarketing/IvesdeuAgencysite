@@ -9,9 +9,9 @@ export function FAQ() {
 
   const faqs = [
     {
-      question: 'How long does it take to see results?',
-      answer: 'Paid media performance typically stabilizes within 30–60 days. SEO and organic strategies compound over 3–6 months. We prioritize early momentum while building long-term scalability.',
-      answeredBy: 'Strategy Team'
+      question: 'How long does a website build take?',
+      answer: 'Given you provide or already have the needed amount of media, we can get it live within 3 weeks.',
+      answeredBy: 'Web Team'
     },
     {
       question: 'Do you require long-term contracts?',
@@ -25,12 +25,12 @@ export function FAQ() {
     },
     {
       question: 'What industries do you work with?',
-      answer: 'We serve growth-stage brands and founder-led companies across e-commerce, SaaS, B2B services, and DTC brands.',
+      answer: 'We have experience across many industries but focus on small, community-focused businesses that show opportunity.',
       answeredBy: 'Client Success'
     },
     {
       question: 'How do you measure success?',
-      answer: 'We measure success through revenue growth, ROAS improvement, cost per acquisition efficiency, and sustained conversion rate increases.',
+      answer: 'Our custom KPIs and goals are structured around your personal needs. Success means something different to everyone.',
       answeredBy: 'Analytics Team'
     },
     {

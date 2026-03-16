@@ -17,7 +17,7 @@ export function Navbar() {
     >
       <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center shrink-0" aria-label="Ives Deutschmann Marketing – Home">
-          <img src="/idm-logo.png?v=2" alt="Ives Deutschmann Marketing" className="h-24 w-auto" />
+          <img src="/idm-logo.png?v=2" alt="Ives Deutschmann Marketing" className="h-10 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
@@ -37,7 +37,7 @@ export function Navbar() {
 
         <Link
           to="/#contact"
-          className="px-7 py-4 rounded-full text-white text-base font-semibold bg-cta hover:bg-cta-hover transition-colors font-body min-h-[3rem] flex items-center justify-center"
+          className="px-5 py-2.5 rounded-full text-white text-[0.78rem] font-medium uppercase tracking-[0.12em] bg-cta hover:bg-cta-hover transition-colors font-body flex items-center justify-center"
         >
           Book a Call
         </Link>
